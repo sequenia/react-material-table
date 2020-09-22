@@ -24,6 +24,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
+    "@material-ui/core": "^4.9.0",
     "react": "^16.0.0"
   },
   "devDependencies": {
@@ -46,6 +47,14 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1"
+  },
+  "dependencies": {
+    "@material-ui/styles": "^4.9.0",
+    "clsx": "^1.0.2",
+    "moment": "^2.27.0",
+    "prop-types": "^15.7.2",
+    "react-perfect-scrollbar": "^1.5.3",
+    "recompose": "^0.30.0"
   },
   "files": [
     "dist"
