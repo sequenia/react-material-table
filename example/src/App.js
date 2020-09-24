@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { ExampleComponent } from '@sequenia/react-material-table'
+import TableView from '@sequenia/react-material-table'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return <TableView />
 }
 
 export default App

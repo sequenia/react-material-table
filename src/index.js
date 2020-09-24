@@ -1,5 +1,3 @@
-import React from 'react'
+import TableView from './table_view.js'
 
-export const ExampleComponent = ({ text }) => {
-  return <div>Example Component: {text}</div>
-}
+export default TableView
