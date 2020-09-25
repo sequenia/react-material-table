@@ -2,20 +2,8 @@ import React from 'react'
 import clsx from 'clsx'
 import { withStyles } from '@material-ui/styles'
 
-import SmartLink from '../components/smart_link.js'
-
 const styles = (theme) => ({
-  link: {
-    color: theme.palette.black,
-    textDecoration: 'none',
-    '&:focus': {
-      color: theme.palette.black
-    },
-    '&:hover': {
-      color: theme.palette.black,
-      textDecoration: 'underline'
-    }
-  }
+  root: {}
 })
 
 class ModelCell extends React.Component {
@@ -48,26 +36,14 @@ class ModelCell extends React.Component {
   }
 
   content() {
-    const { classes } = this.props
     const { value, column } = this.state
-    const { model, urlFunc } = column
+    const { model } = column
 
     const displayValue = model.displayValue(value)
     if (!displayValue || displayValue === '') {
       return <React.Fragment>-</React.Fragment>
     }
-    let content = <React.Fragment>{displayValue}</React.Fragment>
-    if (urlFunc) {
-      content = (
-        <SmartLink
-          className={classes.link}
-          to={urlFunc(value)}
-          onClick={this.onClick}
-        >
-          {content}
-        </SmartLink>
-      )
-    }
+    const content = <React.Fragment>{displayValue}</React.Fragment>
     return content
   }
 

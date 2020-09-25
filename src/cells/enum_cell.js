@@ -1,19 +1,16 @@
-import React from 'react';
-import clsx from 'clsx';
-import { withStyles } from '@material-ui/styles';
+import React from 'react'
+import clsx from 'clsx'
+import { withStyles } from '@material-ui/styles'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {}
-});
+})
 
 class EnumCell extends React.Component {
-
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.state = {
-
-    }
+    this.state = {}
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -25,27 +22,31 @@ class EnumCell extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.editable !== nextState.editable ||
-           this.state.value !== nextState.value ||
-           JSON.stringify(this.state.column) !== nextState.column;
+    return (
+      this.state.editable !== nextState.editable ||
+      this.state.value !== nextState.value ||
+      JSON.stringify(this.state.column) !== nextState.column
+    )
   }
 
   render() {
-    const { classes, className } = this.props;
-    const { value, column } = this.state;
+    const { classes, className } = this.props
+    const { value, column } = this.state
 
-    if(!column) {
+    if (!column) {
       return <React.Fragment />
     }
 
-    if(!column.enum) {
-      return <React.Fragment  />
+    if (!column.enum) {
+      return <React.Fragment />
     }
-    
-    return <div className = { clsx(classes.root, className) } >
-      { column.enum.label(value) }
-    </div >
+
+    return (
+      <div className={clsx(classes.root, className)}>
+        {column.enum.label(value)}
+      </div>
+    )
   }
 }
 
-export default withStyles(styles)(EnumCell);
+export default withStyles(styles)(EnumCell)

@@ -68,7 +68,6 @@ class TableView extends React.Component {
     if (columns.length === 0) {
       return <React.Fragment />
     }
-
     return (
       <Card className={clsx(classes.root, className)}>
         <CardContent className={classes.content}>
@@ -103,7 +102,7 @@ class TableView extends React.Component {
                             onChangeItem={(item, column) =>
                               this.onChangeItem(item, index, column)
                             }
-                            hoverable={Boolean(item.itemLink || onClickRow)}
+                            hoverable={Boolean(onClickRow)}
                             onClick={(item) => {
                               if (onClickRow) onClickRow(item, index)
                             }}

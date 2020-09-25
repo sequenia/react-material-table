@@ -59,6 +59,7 @@ class TableHeader extends React.Component {
     if (column.sortKey === orderColumn) {
       newOrderType = orderType === 'asc' ? 'desc' : 'asc'
     }
+    // eslint-disable-next-line prefer-const
     newOrderColumn = column.sortKey
 
     if (onChangeSort) {

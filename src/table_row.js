@@ -1,6 +1,5 @@
 import React from 'react'
 import clsx from 'clsx'
-import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/styles'
 import {
   Checkbox,
@@ -17,23 +16,6 @@ import BooleanCell from './cells/boolean_cell.js'
 const styles = (theme) => ({
   root: {},
   cell: {},
-  linkCell: {
-    padding: 0
-  },
-  link: {
-    color: '#263238',
-    textDecoration: 'none',
-    display: 'block',
-    padding: '16px',
-    '&:focus': {
-      color: '#263238',
-      textDecoration: 'none'
-    },
-    '&:hover': {
-      color: '#263238',
-      textDecoration: 'none'
-    }
-  },
   hoverable: {
     cursor: 'pointer'
   }
@@ -89,10 +71,7 @@ class TableRow extends React.Component {
   }
 
   cellContent(column) {
-    const { classes } = this.props
-
     const { item } = this
-    const { itemLink } = item
 
     const value = item[column.name]
 
@@ -145,13 +124,6 @@ class TableRow extends React.Component {
         />
       )
     }
-    if (itemLink) {
-      component = (
-        <Link to={itemLink} className={classes.link}>
-          {component}
-        </Link>
-      )
-    }
     return component
   }
 
@@ -161,7 +133,7 @@ class TableRow extends React.Component {
     const { columns } = this.state
 
     const { item } = this
-    const { selected, itemLink } = item
+    const { selected } = item
 
     if (columns.length === 0) {
       return <React.Fragment />
@@ -191,13 +163,7 @@ class TableRow extends React.Component {
         {columns.map((column) => {
           const content = this.cellContent(column)
           return (
-            <TableCell
-              key={column.name}
-              className={clsx({
-                [classes.cell]: true,
-                [classes.linkCell]: Boolean(itemLink)
-              })}
-            >
+            <TableCell key={column.name} className={classes.cell}>
               {content}
             </TableCell>
           )
