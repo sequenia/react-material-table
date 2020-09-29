@@ -29,6 +29,39 @@ class EnumCell extends React.Component {
     )
   }
 
+  rawValues() {
+    const { column } = this.state
+    const { data } = column
+    const values = data.map((item) => {
+      return item.value
+    })
+    return values
+  }
+
+  values() {
+    const { column } = this.state
+    const { data } = column
+    const result = {}
+    this.rawValues().forEach((rawValue, index) => {
+      result[rawValue] = {
+        key: data[index].key,
+        value: rawValue
+      }
+    })
+    return result
+  }
+
+  label(value) {
+    if (!value) {
+      return '-'
+    }
+    const enumValue = this.values()[value]
+    if (!enumValue) {
+      return '-'
+    }
+    return enumValue.key
+  }
+
   render() {
     const { classes, className } = this.props
     const { value, column } = this.state
@@ -37,14 +70,12 @@ class EnumCell extends React.Component {
       return <React.Fragment />
     }
 
-    if (!column.enum) {
+    if (!column.data) {
       return <React.Fragment />
     }
 
     return (
-      <div className={clsx(classes.root, className)}>
-        {column.enum.label(value)}
-      </div>
+      <div className={clsx(classes.root, className)}>{this.label(value)}</div>
     )
   }
 }
