@@ -60,7 +60,7 @@ class TableView extends React.Component {
   }
 
   render() {
-    const { allowSelection, classes, className, onClickRow } = this.props
+    const { allowSelection, classes, className, onClickRow, wrapperLinkForCell } = this.props
     const { header, children, items } = this.props
 
     const { columns, allSelected, filterData } = this.state
@@ -92,7 +92,7 @@ class TableView extends React.Component {
                       {items.map((item, index) => {
                         return (
                           <TableRow
-                            key={item.key}
+                            key={item.key || index}
                             columns={columns}
                             allowSelection={allowSelection}
                             item={item}
@@ -106,6 +106,7 @@ class TableView extends React.Component {
                             onClick={(item) => {
                               if (onClickRow) onClickRow(item, index)
                             }}
+                            wrapperLinkForCell={wrapperLinkForCell}
                           />
                         )
                       })}

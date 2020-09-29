@@ -72,6 +72,7 @@ class TableRow extends React.Component {
 
   cellContent(column) {
     const { item } = this
+    const { wrapperLinkForCell } = this.props;
 
     const value = item[column.name]
 
@@ -123,6 +124,9 @@ class TableRow extends React.Component {
           onChange={this.onChangeColumn}
         />
       )
+    }
+    if(wrapperLinkForCell) {
+      return wrapperLinkForCell(item, component);
     }
     return component
   }
