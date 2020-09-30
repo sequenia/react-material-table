@@ -168,7 +168,7 @@ const App = () => {
 
   const onChangeSort = (orderColumn, orderType) => {
     let sortedItems
-    console.log(orderType);
+    
     if (orderType === "asc") {
       sortedItems = items.slice().sort((a, b) => {
         return ('' + a[orderColumn]).localeCompare(b[orderColumn]);
