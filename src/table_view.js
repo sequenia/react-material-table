@@ -60,7 +60,13 @@ class TableView extends React.Component {
   }
 
   render() {
-    const { allowSelection, classes, className, onClickRow, wrapperLinkForCell } = this.props
+    const {
+      allowSelection,
+      classes,
+      className,
+      onClickRow,
+      wrapperLinkForCell
+    } = this.props
     const { header, children, items } = this.props
 
     const { columns, allSelected, filterData } = this.state
@@ -102,7 +108,9 @@ class TableView extends React.Component {
                             onChangeItem={(item, column) =>
                               this.onChangeItem(item, index, column)
                             }
-                            hoverable={Boolean(onClickRow)}
+                            hoverable={
+                              Boolean(wrapperLinkForCell) || Boolean(onClickRow)
+                            }
                             onClick={(item) => {
                               if (onClickRow) onClickRow(item, index)
                             }}
